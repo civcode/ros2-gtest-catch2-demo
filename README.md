@@ -1,12 +1,9 @@
 ### Build
 
-$ colcon build
-
-$ colcon build --packages-select gtest_demo
-
-$ colcon build --packages-select catch2_demo
-
-$ colcon build --packages-select catch2_submodule_demo
+  $ colcon build
+  $ colcon build --packages-select gtest_demo
+  $ colcon build --packages-select catch2_demo
+  $ colcon build --packages-select catch2_submodule_demo
 
 
 ### Run Tests
