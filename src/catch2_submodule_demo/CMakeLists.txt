@@ -60,7 +60,7 @@ if(BUILD_TESTING)
   #find_package(Catch2 REQUIRED PATHS ${CMAKE_SOURCE_DIR}/lib/Catch2/install NO_DEFAULT_PATH)
   #mesasge(STATUS "catch2 path = '$")
   ament_add_catch2(${PROJECT_NAME}_test 
-    test/main_test.cpp 
+    #test/main_test.cpp 
     test/demo_test.cpp
   )
   target_include_directories(${PROJECT_NAME}_test PUBLIC
@@ -69,8 +69,8 @@ if(BUILD_TESTING)
     #$<INSTALL_INTERFACE:include>  
   )
   target_link_libraries(${PROJECT_NAME}_test 
-    Catch2::Catch2
-    #Catch2::Catch2WithMain
+    #Catch2::Catch2
+    Catch2::Catch2WithMain
     #${CMAKE_SOURCE_DIR}/lib/Catch2/install/lib/libCatch2.a
     #${CMAKE_SOURCE_DIR}/lib/Catch2/install/lib/libCatch2Main.a
   )
