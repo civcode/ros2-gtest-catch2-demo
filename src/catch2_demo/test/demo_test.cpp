@@ -1,11 +1,13 @@
 #include <catch2/catch.hpp>
 
-TEST_CASE("package_name", "[]")
+//TEST_CASE("'Test case 1'", "[]")
+TEST_CASE("Test-case-1", "[]")
 {
   REQUIRE(4 == (2 + 2));
 }
 
-TEST_CASE("package_name1", "[]")
+//TEST_CASE("'Test case 2'", "[]")
+TEST_CASE("Test-case-2", "[]")
 {
   REQUIRE(4 == 2);
 }

@@ -37,22 +37,51 @@ if(BUILD_TESTING)
   # a copyright and license is added to all source files
   #set(ament_cmake_cpplint_FOUND TRUE)
   #ament_lint_auto_find_test_dependencies()
+  find_package(Catch2 REQUIRED PATHS lib/Catch2/install NO_DEFAULT_PATH)
   find_package(ament_cmake_catch2 REQUIRED)
-  add_subdirectory(lib/Catch2)
+  #message(STATUS "ament_cmake_catch2_DIR = '${ament_cmake_catch2_DIR}'")
+  message(WARNING "ament_cmake_catch2_DIR = '${ament_cmake_catch2_DIR}'")
+#   message(WARNING "catch2_DIR = '${catch2_DIR}'")
+#   message(WARNING "catch2_FOUND = '${catch2_FOUND}'")
+  message(WARNING "Catch2_DIR = '${Catch2_DIR}'")
+  message(WARNING "Catch2_FOUND = '${Catch2_FOUND}'")
+
+#   get_cmake_property(_variableNames VARIABLES)
+#   list (SORT _variableNames)
+#   foreach (_variableName ${_variableNames})
+#     message(STATUS "${_variableName}=${${_variableName}}")
+#   endforeach()
+#   foreach(dir ${CMAKE_MODULE_PATH})
+#     message(WARNING ${dir})
+#   endforeach()
+  #message(WARNING ${CMAKE_MODULE_PATH})
+  #add_subdirectory(${CMAKE_SOURCE_DIR}/lib/Catch2)
+  #find_package(Catch2 REQUIRED PATHS lib/Catch2/build NO_DEFAULT_PATH)
+  #find_package(Catch2 REQUIRED PATHS ${CMAKE_SOURCE_DIR}/lib/Catch2/install NO_DEFAULT_PATH)
+  #mesasge(STATUS "catch2 path = '$")
   ament_add_catch2(${PROJECT_NAME}_test 
     test/main_test.cpp 
     test/demo_test.cpp
   )
   target_include_directories(${PROJECT_NAME}_test PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>  
+    #${CMAKE_SOURCE_DIR}/lib/Catch2/install/include
+    #$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    #$<INSTALL_INTERFACE:include>  
   )
   target_link_libraries(${PROJECT_NAME}_test 
     Catch2::Catch2
+    #Catch2::Catch2WithMain
+    #${CMAKE_SOURCE_DIR}/lib/Catch2/install/lib/libCatch2.a
+    #${CMAKE_SOURCE_DIR}/lib/Catch2/install/lib/libCatch2Main.a
   )
   ament_target_dependencies(${PROJECT_NAME}_test
     std_msgs
   )
+  get_target_property(OUT ${PROJECT_NAME}_test LINK_LIBRARIES)
+  message(WARNING ${OUT})
+  foreach(dir ${OUT})
+    message(WARNING ${dir})
+  endforeach()
 endif()
 
 ament_package()

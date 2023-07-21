@@ -1,11 +1,13 @@
-#include <catch2/catch.hpp>
+//#include <catch2/catch.hpp>
+//#include <catch2/catch_test_macros.hpp>
+#include <catch2/catch_test_macros.hpp>
 
-TEST_CASE("package_name", "[]")
+TEST_CASE("package_name", "[asdfas]")
 {
   REQUIRE(4 == (2 + 2));
 }
 
-TEST_CASE("package_name1", "[]")
+TEST_CASE("package_name1", "[asdfaaf]")
 {
   REQUIRE(4 == 2);
 }
